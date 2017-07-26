@@ -42,20 +42,16 @@ DTD Configure//EN" "http://jetty.mortbay.org/configure_9_0.dtd">
         </Arg>
     </Call>
 
+    <Get id="nextHandler" name="handler"/>
+
     <Set name="handler">
         <New id="GzipHandler"
              class="org.eclipse.jetty.server.handler.gzip.GzipHandler">
 
-            <Get name="handler">
-                <Set name="handlers">
-                    <Array type="org.eclipse.jetty.server.Handler">
-                        <Item>
-                            <New id="RequestLog"
-                                 class="org.eclipse.jetty.server.handler.RequestLogHandler"/>
-                        </Item>
-                    </Array>
-                </Set>
-            </Get>
+            <Set name="handler">
+                <Ref refid="nextHandler">
+                </Ref>
+            </Set>
         </New>
     </Set>
 
