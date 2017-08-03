@@ -37,8 +37,7 @@ DTD Configure//EN" "http://jetty.mortbay.org/configure_9_0.dtd">
 
     <Call name="setSessionIdManager">
         <Arg>
-            <New class="org.codice.ddf.security.session.AttributeSharingHashSessionIdManager">
-            </New>
+            <New class="org.codice.ddf.security.session.AttributeSharingHashSessionIdManager" />
         </Arg>
     </Call>
 
@@ -49,13 +48,22 @@ DTD Configure//EN" "http://jetty.mortbay.org/configure_9_0.dtd">
                      class="org.eclipse.jetty.server.handler.gzip.GzipHandler">
                     <Call name="setHandler">
                         <Arg>
-                            <New id="HandlerWrapper" class="org.eclipse.jetty.server.handler.HandlerWrapper" >
-                            </New>
+                            <New id="RequestLog"
+                                 class="org.eclipse.jetty.server.handler.RequestLogHandler" />
                         </Arg>
                     </Call>
                 </New>
             </Arg>
         </Call>
     </Get>
+
+    <Ref refid="RequestLog">
+        <Set name="requestLog">
+            <New id="RequestLogImpl" class="org.codice.ddf.pax.web.jetty.AccessRequestLog">
+                <Set name="resource">/access.xml</Set>
+                <Set name="quiet">true</Set>
+            </New>
+        </Set>
+    </Ref>
 
 </Configure>
