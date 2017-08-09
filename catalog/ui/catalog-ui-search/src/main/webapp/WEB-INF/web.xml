@@ -119,12 +119,14 @@
     </filter>
     <filter-mapping>
         <filter-name>GzipFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/</url-pattern>
     </filter-mapping>
 
     <servlet>
         <servlet-name>default</servlet-name>
         <servlet-class>org.eclipse.jetty.servlet.DefaultServlet</servlet-class>
+
+
         <init-param>
             <param-name>gzip</param-name>
             <param-value>true</param-value>
