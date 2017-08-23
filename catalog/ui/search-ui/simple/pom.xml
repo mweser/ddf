@@ -134,7 +134,7 @@
                             org.osgi.framework,
                             org.slf4j,
                             javax.servlet.http,
-                            org.eclipse.jetty.servlets
+			    *
                         </Import-Package>
                         <Export-Package/>
                     </instructions>
